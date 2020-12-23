@@ -1,0 +1,32 @@
+---
+layout: default
+---
+
+<!-- HEADER
+
+banner image by _convention_ ie /cat-thumbs/<cat name>.jpg ??
+
+<div class="banner" style='background: url(/images/{{page.image}}) no-repeat center center;'>
+	<div class="container">
+		<div class="title">
+			<h1>{{ page.fruitname }}</h1>
+		</div>
+	</div>
+</div>
+-->
+
+
+<!-- CONTENT -->
+<div class="container" style="padding-top: 2rem">
+
+	<h1>{{ page.category | capitalize }}</h1>
+
+	<div class="row">
+
+		{% assign fruits = site.data.fruits | where: "category",page.category %}
+		{% for fruit in fruits %}
+			{% include card.html %}
+		{% endfor %}
+
+	</div>
+</div>

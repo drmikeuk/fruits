@@ -1,0 +1,35 @@
+# Site settings
+title: "Fruits"
+baseurl: "" # the subpath of your site, e.g. /blog
+#url: "http://yourdomain.com" # the base hostname & protocol for your site
+port: 			  4115
+
+# Build settings
+#markdown: kramdown
+exclude: ["README.md"]
+include: .nojekyll
+
+# Extra plugin to create page per item from data sources eg CSV
+# https://github.com/avillafiorita/jekyll-datapage_gen
+
+plugins:
+  - jekyll-datapage-generator
+
+page_gen:
+  - data: 'fruits'
+    template: 'fruit'
+    dir: 'fruits'
+    name_expr: 'record["fruitname"].delete(" ")'
+    title: 'fruitname'
+
+  - data: 'fruits'
+    template: 'cat'
+    dir: 'category'
+    name_expr: 'record["category"].delete(" ")'
+    title: 'category'
+
+  - data: 'fruits'
+    template: 'colour'
+    dir: 'colour'
+    name_expr: 'record["colour"].delete(" ")'
+    title: 'colour'

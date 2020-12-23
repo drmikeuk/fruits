@@ -1,0 +1,11 @@
+<div class="col-lg-3 col-md-6 col-sm-12 pb-4" >
+  <div class="card" >
+    {% assign thumb = category | remove: " " | downcase | prepend: "/categoryThumbs/"| append: ".jpg" %}
+    <img src="{{ thumb }}" class="card-img-top" alt="photo of {{ category }}">
+    <div class="card-body">
+      <h5 class="card-title">{{category | capitalize }}</h5>
+      {% assign link = category | remove: " " | downcase | prepend: "/category/"| append: ".html" %}
+      <a href="{{ link }}" class="btn btn-primary">View fruits <i class="fas fa-chevron-right"></i></a>
+    </div>
+  </div>
+</div>
