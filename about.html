@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>About - Fruits</title>
+  <link rel="stylesheet" href="/vendor/bootstrap-4.3.1.min.css">
+  <link rel="stylesheet" href="/vendor/fontawesome-5.8.1.min.css">
+  <link rel="stylesheet" href="/vendor/solarized-light.css">  
+  <link rel="stylesheet" href="/assets/style.css" media="screen" type="text/css">
+  <!-- add in  icons -->
+
+</head>
+
+
+<body>
+<!-- HEADER -->
+<div class="header">
+  <div class="container">
+    <div class="title">
+      <h1><a href="/">Fruits</a></h1>
+      <p class="hidden-xs">Example Jekyll site built from CSV</p>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation -->
+<div class="bg-light">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          
+          
+          
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          
+          <li class="nav-item"><a class="nav-link" href="/all.html">All fruits</a></li>
+          
+          <li class="nav-item"><a class="nav-link" href="/about.html">About</a></li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h1>About</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+    	<p>How this prototype is built…</p>
+
+<h2 id="data">Data</h2>
+
+<p>All items are listed in one file <strong>fruits.csv</strong> which is loaded into <strong>site.data.fruits</strong> array.</p>
+
+<table class="table table-sm tableauto">
+  <thead>
+    <tr>
+      <th>fruitname</th>
+      <th>origin</th>
+      <th>category</th>
+      <th>colour</th>
+      <th>image</th>
+      <th>blurb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bananas</td>
+      <td>Asia</td>
+      <td>tropical</td>
+      <td>yellow</td>
+      <td>Bananas.jpg</td>
+      <td>“Generally, it is agreed that bananas …”</td>
+    </tr>
+    <tr>
+      <td>Strawberries</td>
+      <td>North America</td>
+      <td>berries</td>
+      <td>red</td>
+      <td>Strawberries.jpg</td>
+      <td>“The garden strawberry …”</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="all-fruits-index">All fruits index</h2>
+
+<p>Simply loop through all the items in the data file &amp; display as cards:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="nx">fruit</span> <span class="k">in</span> <span class="nx">site</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">fruits</span> <span class="o">%</span><span class="p">}</span>
+  <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+    <span class="nx">title</span><span class="p">:</span>        <span class="p">{{</span> <span class="nx">fruit</span><span class="p">.</span><span class="nx">fruitname</span> <span class="p">}}</span>
+    <span class="nl">thumbnail</span><span class="p">:</span>    <span class="p">{{</span> <span class="nx">fruit</span><span class="p">.</span><span class="nx">image</span> <span class="p">}}</span>
+    <span class="nl">descriptiuon</span><span class="p">:</span> <span class="p">{{</span> <span class="nx">fruit</span><span class="p">.</span><span class="nx">blurb</span> <span class="p">}}</span>
+  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">{</span><span class="o">%</span> <span class="nx">endfor</span> <span class="o">%</span><span class="p">}</span></code></pre></figure>
+
+<p>Calculate the link for each item from the <strong>fruitname</strong>; this matches the logic used by the jekyll-datapage_gen plugin when creating the pages.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span><span class="o">%</span> <span class="nx">assign</span> <span class="nx">link</span> <span class="o">=</span> <span class="nx">fruit</span><span class="p">.</span><span class="nx">fruitname</span> <span class="o">|</span> <span class="nx">remove</span><span class="p">:</span> <span class="s2">" "</span> <span class="o">|</span> <span class="nx">downcase</span> <span class="o">|</span> <span class="nx">prepend</span><span class="p">:</span> <span class="s2">"/fruits/"</span><span class="o">|</span> <span class="nx">append</span><span class="p">:</span> <span class="s2">".html"</span> <span class="o">%</span><span class="p">}</span></code></pre></figure>
+
+<h2 id="item--pages">Item  pages</h2>
+
+<p>Use the <a href="https://github.com/avillafiorita/jekyll-datapage_gen">jekyll-datapage_gen</a> plugin to generate one page per <strong>item</strong> (row) in the datafile.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">plugins</span><span class="p">:</span>
+  <span class="o">-</span> <span class="nx">jekyll</span><span class="o">-</span><span class="nx">datapage</span><span class="o">-</span><span class="nx">generator</span>
+
+<span class="nx">page_gen</span><span class="p">:</span>
+  <span class="o">-</span> <span class="nx">data</span><span class="p">:</span> <span class="s1">'fruits'</span>                                <span class="c1">// datasource</span>
+    <span class="nx">template</span><span class="p">:</span> <span class="s1">'fruit'</span>                             <span class="c1">// page template</span>
+    <span class="nx">dir</span><span class="p">:</span> <span class="s1">'fruits'</span>                                 <span class="c1">// output directory</span>
+    <span class="nx">name_expr</span><span class="p">:</span> <span class="s1">'record["fruitname"].delete(" ")'</span>  <span class="c1">// create filename from this field (+ strip spaces)</span>
+    <span class="nx">title</span><span class="p">:</span> <span class="s1">'fruitname'</span>                            <span class="c1">// field for page title</span></code></pre></figure>
+
+<p>Creates page per item in /fruits/ eg <a href="/fruits/bananas.html">Bananas</a>.</p>
+
+<h3 id="fruit-template">Fruit template</h3>
+<p>All item data (matches column headings from CSV) is available as page variables eg</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span> {{ page.fruitname }} <span class="nt">&lt;/h1&gt;</span>
+origin: {{ page.origin }}
+category: {{ page.category }}
+colour: {{ page.colour }}</code></pre></figure>
+
+<h2 id="category-index">Category index</h2>
+
+<p>Use the <a href="https://github.com/avillafiorita/jekyll-datapage_gen">jekyll-datapage_gen</a> plugin to generate one page per <strong>category</strong> in the datafile.
+I suspect creates a page for each <strong>item</strong> but all items in one category have the same <strong>filename</strong> so end up with just one file per category.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">page_gen</span><span class="p">:</span>
+  <span class="o">-</span> <span class="nx">data</span><span class="p">:</span> <span class="s1">'fruits'</span>                                <span class="c1">// datasource</span>
+    <span class="nx">template</span><span class="p">:</span> <span class="s1">'cat'</span>                               <span class="c1">// page template</span>
+    <span class="nx">dir</span><span class="p">:</span> <span class="s1">'category'</span>                               <span class="c1">// output directory</span>
+    <span class="nx">name_expr</span><span class="p">:</span> <span class="s1">'record["category"].delete(" ")'</span>   <span class="c1">// create filename from this field (+ strip spaces)</span>
+    <span class="nx">title</span><span class="p">:</span> <span class="s1">'category'</span>                             <span class="c1">// field for page title</span></code></pre></figure>
+
+<h3 id="cat-template">Cat template</h3>
+
+<p>All item data (matches column headings from CSV) is available as page variables; this includes this category eg</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span> {{ page.category | capitalize }} <span class="nt">&lt;/h1&gt;</span></code></pre></figure>
+
+<p>Like the <strong>All fruits index</strong> loop  through all the items in the data file &amp; display as cards. But first <strong>filter</strong> so just display ones in this category:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span><span class="o">%</span> <span class="nx">assign</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="p">(</span><span class="nx">site</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">fruits</span> <span class="o">|</span> <span class="nx">where</span><span class="p">:</span> <span class="s2">"category"</span><span class="p">,</span> <span class="nx">page</span><span class="p">.</span><span class="nx">category</span><span class="p">)</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="nx">fruit</span> <span class="k">in</span> <span class="nx">fruits</span> <span class="o">%</span><span class="p">}</span>
+  <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+    <span class="nx">title</span><span class="p">:</span>        <span class="p">{{</span> <span class="nx">fruit</span><span class="p">.</span><span class="nx">fruitname</span> <span class="p">}}</span>
+    <span class="nl">thumbnail</span><span class="p">:</span>    <span class="p">{{</span> <span class="nx">fruit</span><span class="p">.</span><span class="nx">image</span> <span class="p">}}</span>
+    <span class="nl">descriptiuon</span><span class="p">:</span> <span class="p">{{</span> <span class="nx">fruit</span><span class="p">.</span><span class="nx">blurb</span> <span class="p">}}</span>
+  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">{</span><span class="o">%</span> <span class="nx">endfor</span> <span class="o">%</span><span class="p">}</span></code></pre></figure>
+
+<p>Creates page per category in /category/ eg <a href="/category/tropical.html">Tropical</a></p>
+
+		</div>
+	</div>
+</div>
+
+
+<!-- FOOTER
+<div class="footer">
+  <div class="container">
+    <p><a href="/about/"><i class="fas fa-info-circle" aria-hidden="true"></i> About the project</a></p>
+  </div>
+</div> -->
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="/vendor/jquery-3.3.1.slim.min.js "></script>
+<script src="/vendor/popper.min.js "></script>
+<script src="/vendor/bootstrap-4.3.1.min.js "></script>
+
+</body>
+</html>

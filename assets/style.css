@@ -1,0 +1,52 @@
+/* my styles */
+.header {background: #eee; border-bottom: 5px solid #ddd;}
+.footer {background: #efefef; padding: 3em 0 2em;   margin-top: 2em}
+
+.banner           {height: 500px; background-size: cover; margin-bottom: 50px; padding-top: 2rem}
+.banner h1        {background: rgba(255,255,255, 0.6); padding: 0.5rem 1rem; display: inline-block;}
+
+.card             {border-radius: 0}
+.card-img-top     {height: 10rem; width:auto; object-fit: cover; border-top-left-radius: 0; border-top-right-radius: 0}
+
+.tableauto        {width: auto}
+.highlight        {background-color: #f8f8f8;}
+.highlight .sr    {color: #586e75;  /* not red as OTT */}
+
+
+/*
+ * Font Awesome Free 5.8.1 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ Need to include /vendor/fontawesome-5.8.1.min.css too
+ */
+@font-face {
+ font-family: 'Font Awesome 5 Free';
+ font-style: normal;
+ font-weight: 400;
+ font-display: auto;
+ src: url("../vendor/fa-regular-400.eot");
+ src: url("../vendor/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("../vendor/fa-regular-400.woff2") format("woff2"), url("../vendor/fa-regular-400.woff") format("woff"), url("../vendor/fa-regular-400.ttf") format("truetype"), url("../vendor/fa-regular-400.svg#fontawesome") format("svg"); }
+.far {
+ font-family: 'Font Awesome 5 Free';
+ font-weight: 400; }
+
+@font-face {
+ font-family: 'Font Awesome 5 Free';
+ font-style: normal;
+ font-weight: 900;
+ font-display: auto;
+ src: url("../vendor/fa-solid-900.eot");
+ src: url("../vendor/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../vendor/fa-solid-900.woff2") format("woff2"), url("../vendor/fa-solid-900.woff") format("woff"), url("../vendor/fa-solid-900.ttf") format("truetype"), url("../vendor/fa-solid-900.svg#fontawesome") format("svg"); }
+.fa,
+.fas {
+ font-family: 'Font Awesome 5 Free';
+ font-weight: 900; }
+
+@font-face {
+ font-family: 'Font Awesome 5 Brands';
+ font-style: normal;
+ font-weight: normal;
+ font-display: auto;
+ src: url("../vendor/fa-brands-400.eot");
+ src: url("../vendor/fa-brands-400.eot?#iefix") format("embedded-opentype"), url("../vendor/fa-brands-400.woff2") format("woff2"), url("../vendor/fa-brands-400.woff") format("woff"), url("../vendor/fa-brands-400.ttf") format("truetype"), url("../vendor/fa-brands-400.svg#fontawesome") format("svg"); }
+.fab {
+ font-family: 'Font Awesome 5 Brands'; }
