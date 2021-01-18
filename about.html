@@ -100,16 +100,18 @@
 <p>Simply loop through all the items in the data file &amp; display as cards:</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="nx">fruit</span> <span class="k">in</span> <span class="nx">site</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">fruits</span> <span class="o">%</span><span class="p">}</span>
-  <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
-    <span class="nx">title</span><span class="p">:</span>        <span class="p">{{</span> <span class="nx">fruit</span><span class="p">.</span><span class="nx">fruitname</span> <span class="p">}}</span>
-    <span class="nl">thumbnail</span><span class="p">:</span>    <span class="p">{{</span> <span class="nx">fruit</span><span class="p">.</span><span class="nx">image</span> <span class="p">}}</span>
-    <span class="nl">descriptiuon</span><span class="p">:</span> <span class="p">{{</span> <span class="nx">fruit</span><span class="p">.</span><span class="nx">blurb</span> <span class="p">}}</span>
-  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
-</span><span class="p">{</span><span class="o">%</span> <span class="nx">endfor</span> <span class="o">%</span><span class="p">}</span></code></pre></figure>
+  <span class="p">{</span><span class="o">%</span> <span class="nx">include</span> <span class="nx">card</span><span class="p">.</span><span class="nx">html</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="nx">endfor</span> <span class="o">%</span><span class="p">}</span></code></pre></figure>
 
-<p>Calculate the link for each item from the <strong>fruitname</strong>; this matches the logic used by the jekyll-datapage_gen plugin when creating the pages.</p>
+<p>Where card.html is as below.<br />This calculates the link for each item from the <strong>fruitname</strong>; this matches the logic used by the jekyll-datapage_gen plugin when creating the pages.</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span><span class="o">%</span> <span class="nx">assign</span> <span class="nx">link</span> <span class="o">=</span> <span class="nx">fruit</span><span class="p">.</span><span class="nx">fruitname</span> <span class="o">|</span> <span class="nx">remove</span><span class="p">:</span> <span class="s2">" "</span> <span class="o">|</span> <span class="nx">downcase</span> <span class="o">|</span> <span class="nx">prepend</span><span class="p">:</span> <span class="s2">"/fruits/"</span><span class="o">|</span> <span class="nx">append</span><span class="p">:</span> <span class="s2">".html"</span> <span class="o">%</span><span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+  <span class="p">{</span><span class="o">%</span> <span class="nx">assign</span> <span class="nx">link</span> <span class="o">=</span> <span class="nx">fruit</span><span class="p">.</span><span class="nx">fruitname</span> <span class="o">|</span> <span class="na">remove</span><span class="p">:</span> <span class="s2">" "</span> <span class="o">|</span> <span class="nx">downcase</span> <span class="o">|</span> <span class="na">prepend</span><span class="p">:</span> <span class="s2">"/fruits/"</span><span class="o">|</span> <span class="na">append</span><span class="p">:</span> <span class="s2">".html"</span> <span class="o">%</span><span class="p">}</span>
+
+  <span class="nl">title</span><span class="p">:</span>        <span class="p">{{</span> <span class="nx">fruit</span><span class="p">.</span><span class="nx">fruitname</span> <span class="p">}}</span>
+  <span class="nl">thumbnail</span><span class="p">:</span>    <span class="p">{{</span> <span class="nx">fruit</span><span class="p">.</span><span class="nx">image</span> <span class="p">}}</span>
+  <span class="nl">descriptiuon</span><span class="p">:</span> <span class="p">{{</span> <span class="nx">fruit</span><span class="p">.</span><span class="nx">blurb</span> <span class="p">}}</span>
+<span class="o">&lt;</span><span class="sr">/div&gt;</span></code></pre></figure>
 
 <h2 id="item--pages">Item  pages</h2>
 
@@ -127,18 +129,23 @@
 
 <p>Creates page per item in /fruits/ eg <a href="/fruits/bananas.html">Bananas</a>.</p>
 
-<h3 id="fruit-template">Fruit template</h3>
-<p>All item data (matches column headings from CSV) is available as page variables eg</p>
+<h4 id="fruit-template">Fruit template</h4>
+<p>All item data from the CSV is available as page variables. The variables are mapped to the CSV column headings eg</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span> {{ page.fruitname }} <span class="nt">&lt;/h1&gt;</span>
 origin: {{ page.origin }}
 category: {{ page.category }}
 colour: {{ page.colour }}</code></pre></figure>
 
-<h2 id="category-index">Category index</h2>
+<p>Can calculate the link for each <strong>category</strong> (eg “apples” links to the category page for “apples”) from the category name; this matches the logic used by the jekyll-datapage_gen plugin when creating the category indexes (see below).</p>
 
-<p>Use the <a href="https://github.com/avillafiorita/jekyll-datapage_gen">jekyll-datapage_gen</a> plugin to generate one page per <strong>category</strong> in the datafile.
-I suspect creates a page for each <strong>item</strong> but all items in one category have the same <strong>filename</strong> so end up with just one file per category.</p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span><span class="o">%</span> <span class="nx">assign</span> <span class="nx">link</span> <span class="o">=</span> <span class="nx">page</span><span class="p">.</span><span class="nx">category</span> <span class="o">|</span> <span class="nx">remove</span><span class="p">:</span> <span class="s2">" "</span> <span class="o">|</span> <span class="nx">prepend</span><span class="p">:</span> <span class="s2">"/category/"</span> <span class="o">|</span> <span class="nx">append</span><span class="p">:</span> <span class="s2">".html"</span> <span class="o">%</span><span class="p">}</span></code></pre></figure>
+
+<h2 id="category-index-pages">Category index pages</h2>
+
+<p>Use the <a href="https://github.com/avillafiorita/jekyll-datapage_gen">jekyll-datapage_gen</a> plugin to generate one page per <strong>category</strong> in the datafile. This category page can be used as an index for all items in this category.</p>
+
+<p>I suspect it creates a page for each <strong>item</strong> but all items in one category have the same <strong>filename</strong> so end up with just one file per category.</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">page_gen</span><span class="p">:</span>
   <span class="o">-</span> <span class="nx">data</span><span class="p">:</span> <span class="s1">'fruits'</span>                                <span class="c1">// datasource</span>
@@ -147,9 +154,9 @@ I suspect creates a page for each <strong>item</strong> but all items in one cat
     <span class="nx">name_expr</span><span class="p">:</span> <span class="s1">'record["category"].delete(" ")'</span>   <span class="c1">// create filename from this field (+ strip spaces)</span>
     <span class="nx">title</span><span class="p">:</span> <span class="s1">'category'</span>                             <span class="c1">// field for page title</span></code></pre></figure>
 
-<h3 id="cat-template">Cat template</h3>
+<h4 id="cat-template">Cat template</h4>
 
-<p>All item data (matches column headings from CSV) is available as page variables; this includes this category eg</p>
+<p>All item data from the CSV is available as page variables. The variables are mapped to the CSV column headings. This includes <strong>this category</strong> eg</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span> {{ page.category | capitalize }} <span class="nt">&lt;/h1&gt;</span></code></pre></figure>
 
@@ -165,6 +172,49 @@ I suspect creates a page for each <strong>item</strong> but all items in one cat
 </span><span class="p">{</span><span class="o">%</span> <span class="nx">endfor</span> <span class="o">%</span><span class="p">}</span></code></pre></figure>
 
 <p>Creates page per category in /category/ eg <a href="/category/tropical.html">Tropical</a></p>
+
+<h2 id="list-of-categories">List of categories</h2>
+
+<p>Extract just the field of interest (eg category or colour) from all the items,
+filter this to remove duplicates and then loop through this to produce a list of categories.</p>
+
+<p>eg Categories: Apples, Berries, Citrus, …<br />
+eg Colours: Black, Green, Orange, …</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+<span class="c">&lt;!--</span> <span class="s1">'map'</span> <span class="nx">so</span> <span class="nx">only</span> <span class="nx">category</span> <span class="nx">property</span> <span class="o">+</span> <span class="s1">'uniq'</span> <span class="nx">to</span> <span class="nx">remove</span> <span class="nx">duplicates</span> <span class="o">=&gt;</span> <span class="nx">simple</span> <span class="nx">list</span> <span class="k">of</span> <span class="nx">cats</span> <span class="o">--&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="nx">assign</span> <span class="nx">cats</span> <span class="o">=</span> <span class="nx">site</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">fruits</span> <span class="o">|</span> <span class="na">map</span><span class="p">:</span> <span class="s2">"category"</span><span class="o">|</span> <span class="nx">uniq</span> <span class="o">|</span> <span class="nx">sort</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="nx">cat</span> <span class="k">in</span> <span class="nx">cats</span> <span class="o">%</span><span class="p">}</span>
+  <span class="c">&lt;!--</span> <span class="nx">remove</span> <span class="nx">spaces</span> <span class="o">+</span> <span class="nx">top</span> <span class="o">&amp;</span> <span class="nx">tail</span> <span class="o">=&gt;</span> <span class="sr">/category/</span><span class="o">&lt;</span><span class="nx">thiscat</span><span class="o">&gt;</span><span class="p">.</span><span class="nx">html</span> <span class="o">--&gt;</span>
+  <span class="p">{</span><span class="o">%</span> <span class="nx">assign</span> <span class="nx">link</span> <span class="o">=</span> <span class="nx">cat</span> <span class="o">|</span> <span class="na">remove</span><span class="p">:</span> <span class="s2">" "</span> <span class="o">|</span> <span class="na">prepend</span><span class="p">:</span> <span class="s2">"/category/"</span> <span class="o">|</span> <span class="na">append</span><span class="p">:</span> <span class="s2">".html"</span> <span class="o">%</span><span class="p">}</span>
+  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">"{{link}}"</span><span class="o">&gt;</span><span class="p">{{</span><span class="nx">cat</span> <span class="o">|</span> <span class="nx">capitalize</span> <span class="p">}}</span><span class="o">&lt;</span><span class="sr">/a&gt;&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="nx">endfor</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;</span><span class="sr">/ul&gt;</span></code></pre></figure>
+
+<h4 id="tiles-of-categories">Tiles of categories</h4>
+
+<p>Similarly can create tiles, not just a list, of categories.</p>
+
+<p>The key here is to have a category thumbnail, named after the category.
+eg <code class="highlighter-rouge">/categoryThumbs/ &lt;category&gt;.jpg</code>
+<br /> eg /categoryThumbs/apples.jpg</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c">&lt;!--</span> <span class="s1">'map'</span> <span class="nx">so</span> <span class="nx">only</span> <span class="nx">category</span> <span class="nx">property</span> <span class="o">+</span> <span class="s1">'uniq'</span> <span class="nx">to</span> <span class="nx">remove</span> <span class="nx">duplicates</span> <span class="o">=&gt;</span> <span class="nx">simple</span> <span class="nx">list</span> <span class="k">of</span> <span class="nx">cats</span> <span class="o">--&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="nx">assign</span> <span class="nx">cats</span> <span class="o">=</span> <span class="nx">site</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">fruits</span> <span class="o">|</span> <span class="na">map</span><span class="p">:</span> <span class="s2">"category"</span><span class="o">|</span> <span class="nx">uniq</span> <span class="o">|</span> <span class="nx">sort</span>  <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="nx">category</span> <span class="k">in</span> <span class="nx">cats</span> <span class="o">%</span><span class="p">}</span>
+  <span class="p">{</span><span class="o">%</span> <span class="nx">include</span> <span class="nx">tile</span><span class="p">.</span><span class="nx">html</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="nx">endfor</span> <span class="o">%</span><span class="p">}</span></code></pre></figure>
+
+<p>Where tile.html is:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">div</span> <span class="kd">class</span><span class="o">=</span><span class="s2">"tile"</span><span class="o">&gt;</span>
+  <span class="p">{</span><span class="o">%</span> <span class="nx">assign</span> <span class="nx">thumb</span> <span class="o">=</span> <span class="nx">category</span> <span class="o">|</span> <span class="na">remove</span><span class="p">:</span> <span class="s2">" "</span> <span class="o">|</span> <span class="nx">downcase</span> <span class="o">|</span> <span class="na">prepend</span><span class="p">:</span> <span class="s2">"/categoryThumbs/"</span><span class="o">|</span> <span class="na">append</span><span class="p">:</span> <span class="s2">".jpg"</span> <span class="o">%</span><span class="p">}</span>
+  <span class="nl">img</span><span class="p">:</span>   <span class="p">{{</span> <span class="nx">thumb</span> <span class="p">}}</span>
+  <span class="nl">title</span><span class="p">:</span> <span class="p">{{</span><span class="nx">category</span> <span class="o">|</span> <span class="nx">capitalize</span> <span class="p">}}</span>
+  <span class="p">{</span><span class="o">%</span> <span class="nx">assign</span> <span class="nx">link</span> <span class="o">=</span> <span class="nx">category</span> <span class="o">|</span> <span class="nx">remove</span><span class="p">:</span> <span class="s2">" "</span> <span class="o">|</span> <span class="nx">downcase</span> <span class="o">|</span> <span class="nx">prepend</span><span class="p">:</span> <span class="s2">"/category/"</span><span class="o">|</span> <span class="nx">append</span><span class="p">:</span> <span class="s2">".html"</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;</span><span class="sr">/div&gt;</span></code></pre></figure>
+
+<p>..</p>
 
 		</div>
 	</div>
