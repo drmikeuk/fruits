@@ -147,6 +147,8 @@ The key here is to have a category thumbnail, named after the category.
 eg `/categoryThumbs/ <category>.jpg`
 <br/> eg /categoryThumbs/apples.jpg
 
+ie this is defined by **convention** not data or configuration (so no extra data required!)
+
 {% highlight javascript%}
 <!-- 'map' so only category property + 'uniq' to remove duplicates => simple list of cats -->
 {% raw %}{%{% endraw %} assign cats = site.data.fruits | map: "category"| uniq | sort  {% raw %}%}{% endraw %}
