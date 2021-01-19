@@ -216,7 +216,75 @@ eg <code class="highlighter-rouge">/categoryThumbs/ &lt;category&gt;.jpg</code>
   <span class="p">{</span><span class="o">%</span> <span class="nx">assign</span> <span class="nx">link</span> <span class="o">=</span> <span class="nx">category</span> <span class="o">|</span> <span class="nx">remove</span><span class="p">:</span> <span class="s2">" "</span> <span class="o">|</span> <span class="nx">downcase</span> <span class="o">|</span> <span class="nx">prepend</span><span class="p">:</span> <span class="s2">"/category/"</span><span class="o">|</span> <span class="nx">append</span><span class="p">:</span> <span class="s2">".html"</span> <span class="o">%</span><span class="p">}</span>
 <span class="o">&lt;</span><span class="sr">/div&gt;</span></code></pre></figure>
 
-<p>..</p>
+<h2 id="publishing-jekyll-site-using-github-pages">Publishing Jekyll site using Github pages</h2>
+
+<p>Normal github pages workflow:</p>
+
+<ul>
+  <li>commit sourcecode to <strong>master</strong></li>
+  <li>omit _site  (ie compiled HTML)</li>
+  <li>push to <strong>master</strong>
+    <ul>
+      <li>github builds _site &amp; publishes as github pages</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Github pages doesn’t support custom plugins so instead we will compile the site using jekyll locally and then push the resulting compiled HTML to github (eg see <a href="https://www.drewsilcock.co.uk/custom-jekyll-plugins">Drew</a>).</p>
+
+<ul>
+  <li>commit sourcecode to <strong>master</strong>
+    <ul>
+      <li>omit _site</li>
+      <li>push to <strong>master</strong></li>
+    </ul>
+  </li>
+  <li>create <strong>second</strong> local repository in _site
+    <ul>
+      <li>push to this to another branch eg <strong>livesite</strong></li>
+      <li>configure github to serve site from this branch</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="details">Details</h3>
+
+<ul>
+  <li>make a new local git repository within _site
+    <ul>
+      <li><code class="highlighter-rouge">cd _site</code></li>
+      <li><code class="highlighter-rouge">git init</code></li>
+    </ul>
+  </li>
+  <li>make new “livesite” branch
+    <ul>
+      <li><code class="highlighter-rouge">git checkout -b livesite</code></li>
+    </ul>
+  </li>
+  <li>tell Jekyll to ignore this directory
+    <ul>
+      <li><code class="highlighter-rouge">touch .nojekyll</code></li>
+    </ul>
+  </li>
+  <li>add files &amp; commit them
+    <ul>
+      <li><code class="highlighter-rouge">git add .</code></li>
+      <li><code class="highlighter-rouge">git commit -m "new site"</code></li>
+    </ul>
+  </li>
+  <li>define remote that will push to
+    <ul>
+      <li>ie <code class="highlighter-rouge">git remote add &lt;nameForRemote&gt; &lt;remoteUrl&gt;</code></li>
+      <li>eg <code class="highlighter-rouge">git remote add fruits https://github.com/drmikeuk/fruits.git</code></li>
+    </ul>
+  </li>
+  <li>push to this remote / livesite branch on command line:
+    <ul>
+      <li>ie <code class="highlighter-rouge">git push &lt;remote&gt; &lt;branch&gt;</code></li>
+      <li>eg <code class="highlighter-rouge">git push fruits livesite</code></li>
+    </ul>
+  </li>
+</ul>
 
 		</div>
 	</div>
