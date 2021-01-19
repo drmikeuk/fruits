@@ -199,6 +199,8 @@ eg Colours: Black, Green, Orange, …</p>
 eg <code class="highlighter-rouge">/categoryThumbs/ &lt;category&gt;.jpg</code>
 <br /> eg /categoryThumbs/apples.jpg</p>
 
+<p>ie this is defined by <strong>convention</strong> not data or configuration (so no extra data required!)</p>
+
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c">&lt;!--</span> <span class="s1">'map'</span> <span class="nx">so</span> <span class="nx">only</span> <span class="nx">category</span> <span class="nx">property</span> <span class="o">+</span> <span class="s1">'uniq'</span> <span class="nx">to</span> <span class="nx">remove</span> <span class="nx">duplicates</span> <span class="o">=&gt;</span> <span class="nx">simple</span> <span class="nx">list</span> <span class="k">of</span> <span class="nx">cats</span> <span class="o">--&gt;</span>
 <span class="p">{</span><span class="o">%</span> <span class="nx">assign</span> <span class="nx">cats</span> <span class="o">=</span> <span class="nx">site</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">fruits</span> <span class="o">|</span> <span class="na">map</span><span class="p">:</span> <span class="s2">"category"</span><span class="o">|</span> <span class="nx">uniq</span> <span class="o">|</span> <span class="nx">sort</span>  <span class="o">%</span><span class="p">}</span>
 <span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="nx">category</span> <span class="k">in</span> <span class="nx">cats</span> <span class="o">%</span><span class="p">}</span>
