@@ -169,4 +169,39 @@ Where tile.html is:
 {% endhighlight %}
 
 
-..
+## Publishing Jekyll site using Github pages
+
+Normal github pages workflow:
+
+- commit sourcecode to **master**
+- omit _site  (ie compiled HTML)
+- push to **master**
+  - github builds _site & publishes as github pages
+
+Github pages doesn't support custom plugins so instead we will compile the site using jekyll locally and then push the resulting compiled HTML to github (eg see [Drew](https://www.drewsilcock.co.uk/custom-jekyll-plugins)).
+
+- commit sourcecode to **master**
+  - omit _site
+  - push to **master**
+- create **second** local repository in _site
+  - push to this to another branch eg **livesite**
+  - configure github to serve site from this branch
+
+### Details
+
+- make a new local git repository within _site
+  - `cd _site`
+  - `git init`
+- make new "livesite" branch
+  - `git checkout -b livesite`
+- tell Jekyll to ignore this directory
+  - `touch .nojekyll`
+- add files & commit them
+  - `git add .`
+  - `git commit -m "new site"`
+- define remote that will push to  
+  - ie `git remote add <nameForRemote> <remoteUrl>`
+  - eg `git remote add fruits https://github.com/drmikeuk/fruits.git`
+- push to this remote / livesite branch on command line:
+  - ie `git push <remote> <branch>`
+  - eg `git push fruits livesite`
