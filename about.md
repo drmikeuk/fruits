@@ -174,18 +174,20 @@ Where tile.html is:
 Normal github pages workflow:
 
 - commit sourcecode to **master**
-- omit _site  (ie compiled HTML)
+- exclude _site  (ie compiled HTML)
 - push to **master**
   - github builds _site & publishes as github pages
 
 Github pages doesn't support custom plugins so instead we will compile the site using jekyll locally and then push the resulting compiled HTML to github (eg see [Drew](https://www.drewsilcock.co.uk/custom-jekyll-plugins)).
 
 - commit sourcecode to **master**
-  - omit _site
-  - push to **master**
+  - exclude _site
+  - push to remote **master**
 - create **second** local repository in _site
-  - push to this to another branch eg **livesite**
+  - push to this to a second remote branch eg **livesite**
   - configure github to serve site from this branch
+
+ie two local repositories pushing to different branches in single remote repository
 
 ### Details
 
