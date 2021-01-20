@@ -222,7 +222,7 @@ eg <code class="highlighter-rouge">/categoryThumbs/ &lt;category&gt;.jpg</code>
 
 <ul>
   <li>commit sourcecode to <strong>master</strong></li>
-  <li>omit _site  (ie compiled HTML)</li>
+  <li>exclude _site  (ie compiled HTML)</li>
   <li>push to <strong>master</strong>
     <ul>
       <li>github builds _site &amp; publishes as github pages</li>
@@ -235,17 +235,19 @@ eg <code class="highlighter-rouge">/categoryThumbs/ &lt;category&gt;.jpg</code>
 <ul>
   <li>commit sourcecode to <strong>master</strong>
     <ul>
-      <li>omit _site</li>
-      <li>push to <strong>master</strong></li>
+      <li>exclude _site</li>
+      <li>push to remote <strong>master</strong></li>
     </ul>
   </li>
   <li>create <strong>second</strong> local repository in _site
     <ul>
-      <li>push to this to another branch eg <strong>livesite</strong></li>
+      <li>push to this to a second remote branch eg <strong>livesite</strong></li>
       <li>configure github to serve site from this branch</li>
     </ul>
   </li>
 </ul>
+
+<p>ie two local repositories pushing to different branches in single remote repository</p>
 
 <h3 id="details">Details</h3>
 
