@@ -1,16 +1,86 @@
 /* my styles */
-.header {background: #eee; border-bottom: 5px solid #ddd;}
-.footer {background: #efefef; padding: 3em 0 2em;   margin-top: 2em}
 
-.banner           {height: 500px; background-size: cover; margin-bottom: 50px; padding-top: 2rem}
-.banner h1        {background: rgba(255,255,255, 0.6); padding: 0.5rem 1rem; display: inline-block;}
+/*
+kaka2 (dark blue/grey)  #4B5F6C     rgb(75,95,108)    - like this
+kaka3 (green)           #B09B37     rgb(176,155,55)   - bit yellow?
+kaka5 (bluegrey)        #A8B9CB     rgb(168,185,203)
+
+kakapo1 (bright green)  #7D9D33     rgb(125,157,51)
+kakapo2 (pale green)    #CED38C     rgb(206,211,140)
+kakapo3 (yellow)        #DCC949     rgb(220,201,73)    - quite rich
+kakapo6 (brown)         #775B24     rgb(119,91,36)
+*/
+
+
+body             {background: rgba(75,95,108, 0.1)} /* same as footer so if  short page rest is still footer colour */
+.mainxxx            {background: rgba(75,95,108, 0.1)} /* off-white so white cards stand out */
+/* navbar (dark) and footer:  manu kaka blue/grey #4B5F6C / rgb(75,95,108)*/
+.bg-dark         {background-color: rgb(75,95,108) !important;}
+.footer          {background: rgba(75,95,108, 0.4); padding: 3em 0 2em;  margin-top: 4em}
+.footer a        {color: black}
+
+
+.home           {height: 400px; background-size: cover; background: url(/assets/home.jpg) no-repeat center center; margin-bottom: 50px; padding-top: 2rem}
+.home h1        {font-size: 4rem; color: white}
+.home p         {width: 40%; background: rgba(255,255,255, 0.7); padding: 0.5rem 1rem; font-size: 1.2rem; font-style: italic;}
+
+.banner           {height: 500px; background-repeat: no-repeat; background-size: cover; background-position: center; margin-bottom: 50px; padding-top: 2rem}
+.banner h1        {background: rgba(255,255,255, 0.9); padding: 0.5rem 1rem; display: inline-block;}
+
+
+.tile             {background-size: cover; height: 14rem; font-size: 1.4rem; position: relative; }
+.tiles .pb-4      {padding-bottom: 30px!important;}
+.tile p           {position:absolute; bottom: 6px; left: 6px; margin-bottom: 0; padding: 0 0.5rem; }
+.tile i           {padding-left: 0.2em}
+/* OPTION A - white on black -> blue */
+.tiles a          {color: white; }
+.tiles a:hover    {color: blue; }
+.tile p           {background: rgba(0,0,0, 0.5)}
+/* OPTION B - black on white -> blue */
+.tiles a          {color: black;  }
+.tiles a:hover    {color: blue; }
+.tile p           {background: rgba(255,255,255, 0.8)}
+
 
 .card             {border-radius: 0}
 .card-img-top     {height: 10rem; width:auto; object-fit: cover; border-top-left-radius: 0; border-top-right-radius: 0}
+.card p           {margin-bottom: 0}
+.card i           {color: #7D9D33; padding-left: 10px; position: absolute; bottom: 12px; right: 12px}
+
+h1                {margin-bottom: 1.5rem}
+h2                {margin-bottom: 1em}
+
+dt                {font-weight: 400;}
+dd                {font-weight: 600;}
+.blurb            {font-size: 1.2rem; line-height: 1.7}
 
 .tableauto        {width: auto}
 .highlight        {background-color: #f8f8f8;}
 .highlight .sr    {color: #586e75;  /* not red as OTT */}
+
+
+
+
+
+
+
+/* kaka2 (grey)
+.bg-dark         {background-color: rgb(75,95,108) !important;}
+.footer          {background: rgba(75,95,108, 0.4);}
+body             {background: rgba(75,95,108, 0.1)} */
+
+/* kaka2 (grey) nav + kaka5 (blue)
+.bg-dark         {background-color: rgb(75,95,108) !important;}
+.footer          {background: rgba(168,185,203, 0.4);}
+body             {background: rgba(168,185,203, 0.5)}
+*/
+
+/* green from home
+.bg-dark         {background-color: rgba(10,83,10, 1) !important;}
+.footer          {background: rgba(168,185,203, 0.4);} /* kaka blue * /
+.footerXX          {background: #c3c3c3;} /* ccc grey  * /
+body             {background: rgba(153,208,153, 0.2)} */
+
 
 
 /*
