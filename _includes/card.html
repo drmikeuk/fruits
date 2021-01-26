@@ -1,13 +1,12 @@
-<div class="col-lg-3 col-md-6 col-sm-12 pb-4" >
-  <div class="card" >
-    <img src="{{ fruit.image | prepend: "/thumbs/"}}" class="card-img-top" alt="photo of {{ fruit.fruit }}">
-    <div class="card-body">
-      <h5 class="card-title">{{ fruit.fruitname }}</h5>
-      <p class="card-text">{{ fruit.blurb }}</p>
+{% assign link = fruit.fruitname | remove: " " | downcase | prepend: "/fruits/"| append: ".html" %}
+<!-- col-X to define widths; d-flex & flex-fill so equal height per row; stretched-link so whole card clickable -->
+<div class="col-lg-3 col-md-6 col-sm-12 pb-4 d-flex" >
+    <div class="card flex-fill" >
+        <img src="{{ fruit.image | prepend: "/thumbs/"}}" class="card-img-top" alt="photo of {{ fruit.fruit }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ fruit.fruitname }}</h5>
+          <p class="card-text">{{ fruit.blurb | truncate: 100}}</p>
+          <a href="{{ link }}" class="stretched-link"><i class="fas fa-chevron-circle-right fa-2x"></i></a>
+        </div>
     </div>
-    <div class="card-footer">
-      {% assign link = fruit.fruitname | remove: " " | downcase | prepend: "/fruits/"| append: ".html" %}
-      <a href="{{ link }}" class="btn btn-primary">Details <i class="fas fa-chevron-right"></i></a>
-    </div>
-  </div>
 </div>

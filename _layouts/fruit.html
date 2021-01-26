@@ -3,7 +3,7 @@ layout: default
 ---
 
 <!-- HEADER -->
-<div class="banner" style='background: url(/images/{{page.image}}) no-repeat center center;'>
+<div class="banner" style="background-image: url(/images/{{page.image}})">
 	<div class="container">
 		<div class="title">
 			<h1>{{ page.fruitname }}</h1>
@@ -19,18 +19,18 @@ layout: default
 		<div class="col-lg-8 col-md-9">
 
 			<dl class="row">
-			  <dt class="col-sm-2">origin</dt>
-			  <dd class="col-sm-10">{{page.origin}}</dd>
+			  <dt class="col-sm-2">Origin</dt>
+			  <dd class="col-sm-10">{{page.origin | capitalize}}</dd>
 
-				<dt class="col-sm-2">category</dt>
-			  <dd class="col-sm-10"><a href="{{link}}">{{page.category}}</a></dd>
+				<dt class="col-sm-2">Category</dt>
+			  <dd class="col-sm-10"><a href="{{link}}">{{page.category | capitalize}}</a></dd>
 
-				<dt class="col-sm-2">colour</dt>
-			  <dd class="col-sm-10">{{page.colour}}</dd>
+				<dt class="col-sm-2">Colour</dt>
+			  <dd class="col-sm-10">{{page.colour | capitalize}}</dd>
 
 			</dl>
 
-			<p>{{page.blurb}}</p>
+			<p class="blurb">{{page.blurb}}</p>
 
 		</div>
   </div>

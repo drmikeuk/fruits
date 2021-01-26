@@ -1,9 +1,51 @@
-<!-- FOOTER
+<!-- FOOTER -->
 <div class="footer">
   <div class="container">
-    <p><a href="/about/"><i class="fas fa-info-circle" aria-hidden="true"></i> About the project</a></p>
+    <div class="row">
+      <div class="col-md-9 col-sm-12">
+        <h3>Fruits</h3>
+        <p><i>An example Jekyll site built from CSV and some templates</i>.</p>
+        <p><a href="/about/"><i class="fas fa-info-circle" aria-hidden="true"></i> About the project</a></p>
+      </div>
+    </div>
   </div>
-</div> -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h4>Categories</h4>
+      	<ul>
+      	{% comment %} 'map' so only category property + 'uniq' to remove duplicates => simple list of cats {% endcomment %}
+      	{% assign cats = site.data.fruits | map: "category"| uniq | sort  %}
+      	{% for cat in cats %}
+      		{% comment %} remove spaces + top & tail => /category/<thiscat>.html {% endcomment %}
+      		{% assign link = cat | remove: " " | prepend: "/category/" | append: ".html" %}
+      		<li><a href="{{link}}">{{cat | capitalize }}</a></li>
+      	{% endfor %}
+      	</ul>
+      </div>
+      <div class="col-md-4">
+        <h4>Colours</h4>
+      	<ul>
+      	{% comment %} 'map' so only category property + 'uniq' to remove duplicates => simple list of cats {% endcomment %}
+      	{% assign cats = site.data.fruits | map: "colour"| uniq | sort  %}
+      	{% for cat in cats %}
+      		{% comment %} remove spaces + top & tail => /category/<thiscat>.html {% endcomment %}
+      		{% assign link = cat | remove: " " | prepend: "/colour/" | append: ".html" %}
+      		<li><a href="{{link}}">{{cat | capitalize }}</a></li>
+      	{% endfor %}
+      	</ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="{{ "/vendor/jquery-3.3.1.slim.min.js " | prepend: site.baseurl }}"></script>
