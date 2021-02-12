@@ -51,3 +51,18 @@
 <script src="{{ "/vendor/jquery-3.3.1.slim.min.js " | prepend: site.baseurl }}"></script>
 <script src="{{ "/vendor/popper.min.js " | prepend: site.baseurl }}"></script>
 <script src="{{ "/vendor/bootstrap-4.3.1.min.js " | prepend: site.baseurl }}"></script>
+
+{% if page.filter %}
+<script>
+$(document).ready(function(){
+  // run filter from filter box
+  $("#filterFruit").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    //console.log(value);
+    $(".tiles div").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+{% endif %}

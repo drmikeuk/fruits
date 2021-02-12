@@ -19,14 +19,14 @@ body             {background: rgba(75,95,108, 0.1)} /* same as footer so if  sho
 .footer          {background: rgba(75,95,108, 0.4); padding: 3em 0 2em;  margin-top: 4em}
 .footer a        {color: black}
 
-
-.home           {height: 400px; background-size: cover; background: url(/assets/home.jpg) no-repeat center center; margin-bottom: 50px; padding-top: 2rem}
+.home           {height: 400px; background-repeat: no-repeat; background-size: cover; background-position: center; background-image: url(/assets/home.jpg); margin-bottom: 50px; padding-top: 2rem}
 .home h1        {font-size: 4rem; color: white}
 .home p         {width: 40%; background: rgba(255,255,255, 0.7); padding: 0.5rem 1rem; font-size: 1.2rem; font-style: italic;}
 
 .banner           {height: 500px; background-repeat: no-repeat; background-size: cover; background-position: center; margin-bottom: 50px; padding-top: 2rem}
 .banner h1        {background: rgba(255,255,255, 0.9); padding: 0.5rem 1rem; display: inline-block;}
 
+#filterFruit      {width:100%}
 
 .tile             {background-size: cover; height: 14rem; font-size: 1.4rem; position: relative; }
 .tiles .pb-4      {padding-bottom: 30px!important;}
@@ -49,6 +49,9 @@ body             {background: rgba(75,95,108, 0.1)} /* same as footer so if  sho
 
 h1                {margin-bottom: 1.5rem}
 h2                {margin-bottom: 1em}
+
+.page h1          {margin-top: 1em}
+.page h2          {margin-top: 1.5em; margin-bottom: 0.5rem}
 
 dt                {font-weight: 400;}
 dd                {font-weight: 600;}

@@ -1,6 +1,6 @@
 {% assign link = fruit.fruitname | remove: " " | downcase | prepend: "/fruits/"| append: ".html" %}
-<!-- col-X to define widths; d-flex & flex-fill so equal height per row; stretched-link so whole card clickable -->
-<div class="col-lg-3 col-md-6 col-sm-12 pb-4 d-flex" >
+{% comment %} col-X to define widths; d-flex & flex-fill so equal height per row; stretched-link so whole card clickable {% endcomment %}
+<div class="col-lg-3 col-md-6 col-sm-12 pb-4 d-flexXX" >
     <div class="card flex-fill" >
         <img src="{{ fruit.image | prepend: "/thumbs/"}}" class="card-img-top" alt="photo of {{ fruit.fruit }}">
         <div class="card-body">
