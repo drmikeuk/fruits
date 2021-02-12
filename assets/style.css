@@ -1,22 +1,8 @@
-/* my styles */
 
-/*
-kaka2 (dark blue/grey)  #4B5F6C     rgb(75,95,108)    - like this
-kaka3 (green)           #B09B37     rgb(176,155,55)   - bit yellow?
-kaka5 (bluegrey)        #A8B9CB     rgb(168,185,203)
-
-kakapo1 (bright green)  #7D9D33     rgb(125,157,51)
-kakapo2 (pale green)    #CED38C     rgb(206,211,140)
-kakapo3 (yellow)        #DCC949     rgb(220,201,73)    - quite rich
-kakapo6 (brown)         #775B24     rgb(119,91,36)
-*/
-
-
-body             {background: rgba(75,95,108, 0.1)} /* same as footer so if  short page rest is still footer colour */
-.mainxxx            {background: rgba(75,95,108, 0.1)} /* off-white so white cards stand out */
-/* navbar (dark) and footer:  manu kaka blue/grey #4B5F6C / rgb(75,95,108)*/
-.bg-dark         {background-color: rgb(75,95,108) !important;}
-.footer          {background: rgba(75,95,108, 0.4); padding: 3em 0 2em;  margin-top: 4em}
+body             {background: #ACB5BB} /* same as footer so if  short page rest is still footer colour */
+.main            {background: #ECEEF0; padding-bottom: 4em} /* off-white so white cards stand out */
+bg-dark          {background-color: rgb(75,95,108) !important;}
+.footer          {background: ACB5BB; padding: 3em 0 2em;}
 .footer a        {color: black}
 
 .home           {height: 400px; background-repeat: no-repeat; background-size: cover; background-position: center; background-image: url(/assets/home.jpg); margin-bottom: 50px; padding-top: 2rem}
@@ -60,29 +46,6 @@ dd                {font-weight: 600;}
 .tableauto        {width: auto}
 .highlight        {background-color: #f8f8f8;}
 .highlight .sr    {color: #586e75;  /* not red as OTT */}
-
-
-
-
-
-
-
-/* kaka2 (grey)
-.bg-dark         {background-color: rgb(75,95,108) !important;}
-.footer          {background: rgba(75,95,108, 0.4);}
-body             {background: rgba(75,95,108, 0.1)} */
-
-/* kaka2 (grey) nav + kaka5 (blue)
-.bg-dark         {background-color: rgb(75,95,108) !important;}
-.footer          {background: rgba(168,185,203, 0.4);}
-body             {background: rgba(168,185,203, 0.5)}
-*/
-
-/* green from home
-.bg-dark         {background-color: rgba(10,83,10, 1) !important;}
-.footer          {background: rgba(168,185,203, 0.4);} /* kaka blue * /
-.footerXX          {background: #c3c3c3;} /* ccc grey  * /
-body             {background: rgba(153,208,153, 0.2)} */
 
 
 
