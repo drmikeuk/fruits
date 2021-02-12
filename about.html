@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/vendor/fontawesome-5.8.1.min.css">
   <link rel="stylesheet" href="/vendor/solarized-light.css">
   <link rel="stylesheet" href="/assets/style.css" media="screen" type="text/css">
-  <!-- add in  icons -->
+  <!-- icons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -49,7 +49,7 @@
 
 <div class="main">
 
-<div class="container">
+<div class="container page">
 	<div class="row">
 		<div class="col">
 			<h1>About</h1>
@@ -57,7 +57,16 @@
 	</div>
 	<div class="row">
 		<div class="col">
-    	<p>How this prototype is built…</p>
+    	<p>This is a prototype to see what kind of static website you an build from a CSV file plus some <a href="https://jekyllrb.com/">Jekyll</a> templates.</p>
+
+<ul>
+  <li>Theres a dozen fruit that you can explore by <strong>category</strong> or <strong>colour</strong>.</li>
+  <li>Each fruit page contains an image and some metadata.</li>
+  <li>Each fruit page contains links to view all fruit in that <strong>category</strong> or <strong>colour</strong>. eg <a href="/fruits/galaapples.html">Gala Apples</a> has links to all <a href="/category/apples.html">apples</a> or all <a href="/colour/red.html">red</a> fruit.</li>
+  <li>The index of <a href="/all.html">all fruits</a> has a client side <strong>filter</strong> to allow some basic searching.</li>
+</ul>
+
+<p>How this prototype is built…</p>
 
 <h2 id="data">Data</h2>
 
@@ -299,14 +308,14 @@ eg <code class="highlighter-rouge">/categoryThumbs/ &lt;category&gt;.jpg</code>
     <div class="row">
       <div class="col-md-9 col-sm-12">
         <h3>Fruits</h3>
-        <p><i>An example Jekyll site built from CSV and some templates</i>.</p>
-        <p><a href="/about/"><i class="fas fa-info-circle" aria-hidden="true"></i> About the project</a></p>
+        <p><i>An example Jekyll site built from CSV and some templates.</i></p>
+        <p><a href="/about.html"><i class="fas fa-info-circle" aria-hidden="true"></i> About the project</a></p>
       </div>
     </div>
   </div>
 
   <div class="container">
-    <div class="row">
+    <div class="row" style="padding-top:2em">
       <div class="col-md-4">
         <h4>Categories</h4>
       	<ul>
@@ -378,6 +387,8 @@ eg <code class="highlighter-rouge">/categoryThumbs/ &lt;category&gt;.jpg</code>
 <script src="/vendor/jquery-3.3.1.slim.min.js "></script>
 <script src="/vendor/popper.min.js "></script>
 <script src="/vendor/bootstrap-4.3.1.min.js "></script>
+
+
 
 </body>
 </html>
