@@ -5,6 +5,12 @@ nav: "yes"
 sortTitle: "z"
 ---
 
+This static site is a prototype to see what kind of website you an build from a CSV file plus some [Jekyll](https://jekyllrb.com/) templates.
+
+- Theres a dozen fruit that you can explore by **category** or **colour**.
+- Each fruit page contains an image and some metadata.
+- Each fruit page contains links to view all fruit in that **category** or **colour**. eg [Gala Apples](/fruits/galaapples.html) has links to all [apples](/category/apples.html) or all [red](/colour/red.html) fruit.
+
 How this prototype is built...
 
 ## Data
