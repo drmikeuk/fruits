@@ -7,7 +7,7 @@ port: 			  4115
 # Build settings
 #markdown: kramdown
 exclude: ["README.md"]
-include: .nojekyll
+include: [".nojekyll"]
 
 # Extra plugin to create page per item from data sources eg CSV
 # https://github.com/avillafiorita/jekyll-datapage_gen
